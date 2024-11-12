@@ -8,10 +8,10 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-  'nvim-telescope/telescope.nvim', tag = '0.1.5',
--- or                            , branch = '0.1.x',
-  requires = { {'nvim-lua/plenary.nvim'} }
-}
+	  'nvim-telescope/telescope.nvim', tag = '0.1.5',
+	  -- or                            , branch = '0.1.x',
+	  requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
 
   use({
@@ -23,14 +23,12 @@ return require('packer').startup(function(use)
 	  end
   })
 
-  use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+  use( 'nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
 
   use('nvim-treesitter/playground')
   use('theprimeagen/harpoon')
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
-
-  use('mg979/vim-visual-multi') -- Multi-line
 
   use {
 	  'VonHeikemen/lsp-zero.nvim',
@@ -54,4 +52,38 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+
+use {
+    'junegunn/fzf.vim',
+    requires = { 'junegunn/fzf', run = ':call fzf#install()' }
+ }
+
+ use('mg979/vim-visual-multi')
+
+-- Peek
+use 'Shougo/vimproc'
+use 'toppair/peek.nvim'
+
+-- dbt pal
+
+use {
+    "PedramNavid/dbtpal",
+    requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope.nvim" } },
+}
+
+-- lazy git
+-- nvim v0.7.2
+use({
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim",
+    },
+})
+
+-- GitHub Copilot
+use 'github/copilot.vim'
+
+
 end)
